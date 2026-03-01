@@ -1,0 +1,27 @@
+import random
+words=["apple","banana","grape","orange","mango"]
+word=random.choice(words)
+guessed_letters=[]
+chances=6
+while chances>0:
+    display=""
+    for letter in word:
+        if letter in guessed_letters:
+            display+=letter+" "
+        else:
+            display+="_ "
+    print("\nWord:",display)
+    print("Chances left:",chances)
+    if "_" not in display:
+        print("Congrutulations you guessed the word!")
+        break
+    guess=input("Guess a letter: ").lower()
+    if guess in word:
+        print("Correct guess!")
+        guessed_letters.append(guess)
+    else:
+        print("Wrong guess!")
+        chances-=1
+if chances==0:
+    print("\nGame over!")
+    print("The word was:",word)
